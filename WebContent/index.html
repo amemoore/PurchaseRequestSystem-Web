@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="main.css">
+	<title>PRS</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<!-- Welcome Page with Buttons for Signing In or Registering -->
+
+	<body class="welcome">
+		<div>
+			<h1 id="mainpagetitle">Welcome to Moore's Purchase Request System</h1>
+			
+			<form id="mainpage" name="SignIn" method="GET" action="MainServlet">
+				<input type="hidden" name="signin" value="signingin">
+				<button type="submit">Sign In</button>
+			</form>
+			
+			<form id="mainpage" name="Register" method="GET" action="MainServlet">
+				<input type="hidden" name="register" value="registering">
+				<button type="submit">Register</button>
+			</form>
+	    </div>
+	</body>
+</html>
