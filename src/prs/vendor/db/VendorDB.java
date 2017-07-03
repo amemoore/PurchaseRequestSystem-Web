@@ -11,7 +11,7 @@ import prs.util.DBUtil;
 public class VendorDB implements VendorDAO {
 	ArrayList<Vendor>vendors = null;
 	
-/////COMPLETE LIST OF ALL VENDORS
+//Complete list of all vendors
 	public ArrayList<Vendor> getAllVendors() { 
 		vendors = new ArrayList<>();
 		String sql = "SELECT * FROM vendors ";
@@ -38,7 +38,7 @@ public class VendorDB implements VendorDAO {
         }
         return vendors;
     }
-/////SEARCH VENDORS BY STATE
+//Search vendors by state
 	public ArrayList<Vendor> getVendorByState(String st) { 
 		vendors = new ArrayList<>();
 		String sql = "SELECT * FROM vendors "
@@ -67,7 +67,7 @@ public class VendorDB implements VendorDAO {
         }
         return vendors;
 }
-/////SEARCH VENDORS BY NAME
+//Search vendors by name
 	public Vendor getVendorByName(String nm) { 
 		Vendor v = null;
 		String sql = "SELECT * FROM vendors "
@@ -95,7 +95,7 @@ public class VendorDB implements VendorDAO {
 	    }
 	    return v;
 }	
-/////SEARCH VENDORS BY ID
+//Search vendors by ID
 	public Vendor getVendorByVendorId(int nm) { 
 		Vendor v = null;
 		String sql = "SELECT * FROM vendors "
@@ -123,7 +123,7 @@ public class VendorDB implements VendorDAO {
 	    }
 	    return v;
 }	
-/////LIST PREAPPROVED VENDORS
+//List of pre-approved vendors
 	public ArrayList<Vendor> listPreapprovedVendors() { 
 		Vendor v = null;
 		String sql = "SELECT * FROM vendors "

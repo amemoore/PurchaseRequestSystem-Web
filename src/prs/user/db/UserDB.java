@@ -11,7 +11,7 @@ import prs.util.DBUtil;
 public class UserDB implements UserDAO {
 	ArrayList<User> users;
 	
-/////Logging in User - Getting User info from the DB.////////////////////////////////////////////////s
+//Getting user information from the db
 	public User getUser(String un){
 		User user = new User();
 		String sql = " SELECT * FROM users "
@@ -38,7 +38,7 @@ public class UserDB implements UserDAO {
 		return user;
 	}
 	
-/////Registering User - Adding User to the DB/////////////////////////////////////////////////////////////////
+//Adding user to the db
 	public void addUser(User u) {
 		String sql
                 = "INSERT INTO users (UserName, Password, FirstName, LastName, Phone, Email, Manager) "

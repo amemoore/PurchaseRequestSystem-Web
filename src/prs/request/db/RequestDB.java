@@ -16,6 +16,7 @@ public class RequestDB implements RequestDAO {
 	ArrayList<User> requests;
 	private static Request r ;
 	
+//Adding request to the db
 		public void addRequest(Request r) {
 			String sql
 	                = "INSERT INTO requests "
@@ -39,7 +40,8 @@ public class RequestDB implements RequestDAO {
 	            System.out.println(e);
 	        }
     }
-		
+
+//Get most recent request
 		public int getRequestId() { 
 			int rId=0;
 			String sql = "SELECT    * "
@@ -57,7 +59,43 @@ public class RequestDB implements RequestDAO {
 		    }
 		    return rId;
 	}	
+
+//Automatic approvel of requests under $50
+		public int approveRequestUnderFifty(int rId) { 
+			int count = 0;
+			String sql = " Update requests "	
+						+ " set status = 'approved' "
+						+ " where id = ? ";
+			try (  Connection connection = DBUtil.getConnection();
+					PreparedStatement ps = connection.prepareStatement(sql)) {
+					ps.setInt(1, rId);
+					count = ps.executeUpdate();
+		    } 
+			catch (SQLException e) {
+		        System.out.println(e);
+		    }
+			return count;
+		}			
 		
+//Manager function - to approve request
+		public int approveRequest(int requestId) { 
+			int count = 0;
+			String sql = "Update requests "	
+							+ "set status = 'approved' "
+							+ " where id = ? ";
+			try (  Connection connection = DBUtil.getConnection();
+					PreparedStatement ps = connection.prepareStatement(sql)) {
+					ps.executeUpdate();
+					ps.setInt(1, requestId);
+		    } 
+			
+			catch (SQLException e) {
+		        System.out.println(e);
+		    }
+			return count;
+		}	   
+
+//New functionality? New object vs complication table join vs different information presentation
 		public ArrayList<String> checkRequest() { 
 //			String firstName;
 //			String lastName;
@@ -106,36 +144,4 @@ public class RequestDB implements RequestDAO {
 //		    }
 		    return requestStatus;
 	}	
-		public int approveRequest(int requestId) { 
-			int count = 0;
-			String sql = "Update requests "	
-							+ "set status = 'approved' "
-							+ " where id = ? ";
-			try (  Connection connection = DBUtil.getConnection();
-					PreparedStatement ps = connection.prepareStatement(sql)) {
-					ps.executeUpdate();
-					ps.setInt(1, requestId);
-		    } 
-			
-			catch (SQLException e) {
-		        System.out.println(e);
-		    }
-			return count;
-		}	   
-		
-		public int approveRequestUnderFifty(int rId) { 
-			int count = 0;
-			String sql = " Update requests "	
-						+ " set status = 'approved' "
-						+ " where id = ? ";
-			try (  Connection connection = DBUtil.getConnection();
-					PreparedStatement ps = connection.prepareStatement(sql)) {
-					ps.setInt(1, rId);
-					count = ps.executeUpdate();
-		    } 
-			catch (SQLException e) {
-		        System.out.println(e);
-		    }
-			return count;
-		}	    
 }
