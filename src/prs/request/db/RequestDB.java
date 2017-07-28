@@ -93,55 +93,6 @@ public class RequestDB implements RequestDAO {
 		        System.out.println(e);
 		    }
 			return count;
-		}	   
+		}
 
-//New functionality? New object vs complication table join vs different information presentation
-		public ArrayList<String> checkRequest() { 
-//			String firstName;
-//			String lastName;
-//    		String productName;
-//    		String price;
-//    		int quantity;
-//    		Date dateNeeded;
-//    		Date dateSubmitted;
-//    		String status;
-    		ArrayList<String> requestStatus = new ArrayList<>();
-//			String sql = " SELECT u.FirstName, u.LastName, p.Name, p.Price, l.Quantity, r.DateNeeded, r.SubmittedDate, r.Status "
-//							+  " FROM users u, requests r, lineitems l, products p "
-//							+ " where u.Id = r.UserId "
-//							+ " and r.Id = l.RequestId "
-//    						+ " and l.ProductId = p.Id "
-//    						+ " Order by r.SubmittedDate ";
-//			try (  Connection connection = DBUtil.getConnection();
-//					PreparedStatement ps = connection.prepareStatement(sql)) {
-//					ResultSet rs = ps.executeQuery();
-//				while (rs.next()){
-//		    		firstName = rs.getString(1);
-//		    		lastName = rs.getString(2);
-//		    		productName = rs.getString(3);
-//		    		price = (String)rs.getString(4);
-//		    		quantity = rs.getInt(5);
-//		    		dateNeeded = rs.getDate(6);
-//		    		dateSubmitted = rs.getDate(7);
-//		    		status = rs.getString(8);
-//		    		
-//		    		DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-//	                String dateNeededString = dateFormat.format(dateNeeded);
-//	                String dateSubmittedString = dateFormat.format(dateSubmitted);
-//		    		String reqString = new String();
-//		    				reqString.add(firstName);
-//		    		 requestStatus.add(lastName);
-//		    		 requestStatus.add(price);
-//		    		 requestStatus.add(productName);
-//		    		 requestStatus.add(Integer.toString(quantity));
-//		    		 requestStatus.add(dateNeededString);
-//		    		 requestStatus.add(dateSubmittedString);
-//		    		 requestStatus.add(status);
-//		     }
-//			}
-//			catch (SQLException e) {
-//		        System.out.println(e);
-//		    }
-		    return requestStatus;
-	}	
 }

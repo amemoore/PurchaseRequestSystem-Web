@@ -42,7 +42,5 @@ public class LineItem {
 	}
 	public String toString (){
 		return productID + " " + quantity;
-		
 	}
-	
 }

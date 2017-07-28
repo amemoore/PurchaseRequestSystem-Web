@@ -12,5 +12,4 @@ public interface ProductReader {
 	
 	public Product getProduct(String nm);
 	
-	//public ArrayList<Product> getTopProducts();
 }

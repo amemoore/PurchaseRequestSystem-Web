@@ -102,8 +102,6 @@ public void setTotal(double total) {
 }
 public String toString(){
 	return dateNeeded + " " + description;
-	
 }
-
 }
 

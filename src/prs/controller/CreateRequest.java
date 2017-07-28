@@ -24,37 +24,23 @@ import prs.user.db.UserDAO;
 import prs.vendor.db.VendorDAO;
 import prs.vendor.db.VendorDB;
 
-/**
- * Servlet implementation class WelcomeAndDisplayMenu
- */
 @WebServlet({"/CreateRequest"})
 public class CreateRequest extends HttpServlet {
 	
 	private static ProductDAO productsDAO = null;
 	private static VendorDAO vendorsDAO = null;
 	private static RequestDAO requestsDAO = null;
-	private static LineItemDAO lineitemsDAO = null;
 	
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public CreateRequest() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request,response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = null;
 		session = request.getSession();
@@ -139,7 +125,6 @@ public class CreateRequest extends HttpServlet {
 				System.out.println(rId);
 				
 				LineItem li = new LineItem(rId, productIDInt, 1);
-				//lineitemsDAO.addLineItem(li);
 				
 				if (r.getTotal() < 50.0){
 					requestsDAO.approveRequestUnderFifty(rId);

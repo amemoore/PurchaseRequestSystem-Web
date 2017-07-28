@@ -15,8 +15,10 @@ import prs.user.db.UserDAO;
 import prs.util.Validator;
 import prs.vendor.db.VendorDAO;
 
+//This Class was the MainApp of the first iteration of the PRS project as a Console-Based Application.
+//It is left for my reference, but not in use.
+
 public class PRSMainApp {
-	
 	private static VendorDAO vendorsDAO = null;
 	private static ProductDAO productsDAO = null;
 	private static RequestDAO requestsDAO = null;
@@ -32,7 +34,7 @@ public class PRSMainApp {
 	private static User u;
 	private static Request r;
 	private static Boolean b;
-	
+
 		public static void main(String[] args) {
 			int menuOption;
 			vendorsDAO = DAOFactory.getVendorDAO();
@@ -46,8 +48,6 @@ public class PRSMainApp {
 			while (choice.equalsIgnoreCase("y")){
 				displayMenu();
 				menuOption = Validator.getInt(sc, "Please choose a menu option:  ");
-//FOR SERVLET START SEPARATE EMPLOYEE AND MANAGER LOGINS - THE MANAGER APPROVE REQUEST METHOD INCORPORATES
-// THE CHECKREQUEST METHOD.
 				switch (menuOption){
 					case 1:
 						loginRegister();
@@ -59,7 +59,7 @@ public class PRSMainApp {
 						doTransaction();
 						break;
 					case 4:
-						checkRequest();
+						//checkRequest(); // Not used in web-based.
 						break;
 					case 5:
 						listAllVendors();
@@ -70,7 +70,7 @@ public class PRSMainApp {
 						listPreapprovedVendors();
 						break;
 					case 7:
-						approveRequest();
+						//approveRequest(); //Not used in web-based.
 				}
 				choice = Validator.getString(sc, "Continue application? (y/n)");
 				if (choice.equalsIgnoreCase("n"))
@@ -194,28 +194,28 @@ public class PRSMainApp {
 			}
 		}
 
-//Employee - Check Status of Purchase Request
-		public static void checkRequest(){
-			ArrayList<String> requestStatus = new ArrayList<>();
-			requestStatus = requestsDAO.checkRequest();
-			System.out.println("Employee Name\tProduct Name\t\tPrice\t\tQuantity\tDate Needed\tDate Submiteed\tStatus");
-			System.out.println("----------------------------------------------------------------------------------------");
-			for (int i=0; i<requestStatus.size(); i++){
-				System.out.print(requestStatus + "\t");
-			}
-			System.out.println();
-		}
+//Employee - Check Status of Purchase Request - Not used in Web-based.
+//		public static void checkRequest(){
+//			ArrayList<String> requestStatus = new ArrayList<>();
+//			requestStatus = requestsDAO.checkRequest();
+//			System.out.println("Employee Name\tProduct Name\t\tPrice\t\tQuantity\tDate Needed\tDate Submiteed\tStatus");
+//			System.out.println("----------------------------------------------------------------------------------------");
+//			for (int i=0; i<requestStatus.size(); i++){
+//				System.out.print(requestStatus + "\t");
+//			}
+//			System.out.println();
+//		}
 		
-//Manager - Check Status of Purchase Request and Approval 
-		public static void approveRequest(){
-			int requestId = 0;
-			checkRequest();
-			requestId = Validator.getInt(sc, "Please enter the first Request No. from the above list for "
-					+ "approval (or enter 0 to exit):  ");
-			if (requestId!=0 && requestsDAO.approveRequest(requestId)==1){
-				System.out.println("Request No. " + requestId + " was updated.");
-			}
-		}
+//Manager - Check Status of Purchase Request and Approval-Not used in Web-based.
+//		public static void approveRequest(){
+//			int requestId = 0;
+//			checkRequest();
+//			requestId = Validator.getInt(sc, "Please enter the first Request No. from the above list for "
+//					+ "approval (or enter 0 to exit):  ");
+//			if (requestId!=0 && requestsDAO.approveRequest(requestId)==1){
+//				System.out.println("Request No. " + requestId + " was updated.");
+//			}
+//		}
 		
 //Providing Complete Vendor List		
 		public static void listAllVendors(){

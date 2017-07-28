@@ -6,6 +6,4 @@ public interface RequestReader {
 	
 	public int getRequestId();
 	
-	public ArrayList<String> checkRequest();
-
 }
